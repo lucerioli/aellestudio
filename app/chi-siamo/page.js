@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { ArrowRight, Scale, ShieldCheck, Users, CheckCircle } from 'lucide-react'
 
 export default function ChiSiamo() {
-  // Stato per sapere su quale consulente è il mouse
   const [activeProfile, setActiveProfile] = useState(null)
 
   return (
@@ -59,7 +58,7 @@ export default function ChiSiamo() {
         </div>
       </section>
 
-      {/* --- I CONSULENTI (INTERATTIVO CON SLIDE) --- */}
+      {/* --- I CONSULENTI (DESKTOP: Slide laterale / MOBILE: Accordion) --- */}
       <section className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-serif)' }}>
@@ -68,73 +67,86 @@ export default function ChiSiamo() {
           <p className="text-slate-600 text-lg">Le persone che lavorano per te.</p>
         </div>
 
-        {/* CONTENITORE RELATIVO (IMPORTANTE per il posizionamento delle slide) */}
-        <div 
-          className="relative w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-12"
-          onMouseLeave={() => setActiveProfile(null)} // Resetta quando il mouse esce dall'area intera
-        >
+        {/* Container principale */}
+        <div className="relative w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
           
-          {/* --- FOTO ALESSIA (SINISTRA) --- */}
+          {/* === FOTO ALESSIA (SINISTRA) === */}
           <div 
-            className="relative w-full md:w-1/2 group z-10 cursor-pointer"
+            className="relative w-full md:w-1/2 z-10 cursor-pointer"
             onMouseEnter={() => setActiveProfile('alessia')}
+            onMouseLeave={() => setActiveProfile(null)}
           >
-            {/* Immagine */}
-            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-md transition-all duration-500 group-hover:shadow-xl">
+            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-md transition-all duration-500">
               <Image 
                 src="/images/alessia.jpg" 
                 alt="Dott.ssa Alessia Cerioli" 
                 fill 
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105" 
+                className="object-cover object-top transition-transform duration-700 hover:scale-105" 
               />
-              {/* Gradiente per leggere il testo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500" />
-              
-              {/* Etichetta Nome in basso (visibile a riposo) */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white group-hover:opacity-0 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent hover:opacity-0 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white hover:opacity-0 transition-opacity duration-300">
                 <h3 className="text-3xl font-bold mb-1" style={{ fontFamily: 'var(--font-serif)' }}>Dott.ssa Alessia Cerioli</h3>
                 <p className="text-white/90 font-medium uppercase tracking-wide text-sm">Dottoressa Commercialista</p>
               </div>
             </div>
+
+            {/* MOBILE: Accordion nativo (solo mobile) */}
+            <details className="md:hidden mt-4 bg-white border border-slate-200 rounded-2xl overflow-hidden">
+              <summary className="p-4 font-medium text-slate-700 cursor-pointer list-none flex justify-between items-center">
+                <span style={{ fontFamily: 'var(--font-serif)' }}>Vedi biografia</span>
+                <span className="text-slate-400">▼</span>
+              </summary>
+              <div className="p-6 pt-0 text-slate-600 leading-relaxed text-sm space-y-3">
+                <p>Laureata in Economia e Commercio, iscritta all'Albo dei Dottori Commercialisti.</p>
+                <p>Si occupa di <strong>contabilità aziendale, bilanci e revisione legale dei conti</strong>. Ha una spiccata competenza nella gestione finanziaria delle PMI e nell'assistenza a startup innovative.</p>
+                <p>Appassionata di organizzazione aziendale, il suo obiettivo è ottimizzare i processi contabili dei clienti per liberare tempo e risorse.</p>
+                <Link href="/prenotazioni" className="inline-flex items-center gap-2 text-slate-900 font-bold text-sm pt-2">
+                  Prenota con Alessia <ArrowRight size={16} />
+                </Link>
+              </div>
+            </details>
           </div>
 
-          {/* --- FOTO LUCA (DESTRA) --- */}
+          {/* === FOTO LUCA (DESTRA) === */}
           <div 
-            className="relative w-full md:w-1/2 group z-10 cursor-pointer"
+            className="relative w-full md:w-1/2 z-10 cursor-pointer"
             onMouseEnter={() => setActiveProfile('luca')}
+            onMouseLeave={() => setActiveProfile(null)}
           >
-            {/* Immagine */}
-            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-md transition-all duration-500 group-hover:shadow-xl">
+            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-md transition-all duration-500">
               <Image 
                 src="/images/luca.jpg" 
                 alt="Rag. Luca Cerioli" 
                 fill 
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-105" 
+                className="object-cover object-top transition-transform duration-700 hover:scale-105" 
               />
-              {/* Gradiente per leggere il testo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500" />
-
-              {/* Etichetta Nome in basso (visibile a riposo) */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white group-hover:opacity-0 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent hover:opacity-0 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white hover:opacity-0 transition-opacity duration-300">
                 <h3 className="text-3xl font-bold mb-1" style={{ fontFamily: 'var(--font-serif)' }}>Rag. Luca Cerioli</h3>
                 <p className="text-white/90 font-medium uppercase tracking-wide text-sm">Tributarista</p>
               </div>
             </div>
+
+            {/* MOBILE: Accordion nativo (solo mobile) */}
+            <details className="md:hidden mt-4 bg-white border border-slate-200 rounded-2xl overflow-hidden">
+              <summary className="p-4 font-medium text-slate-700 cursor-pointer list-none flex justify-between items-center">
+                <span style={{ fontFamily: 'var(--font-serif)' }}>Vedi biografia</span>
+                <span className="text-slate-400">▼</span>
+              </summary>
+              <div className="p-6 pt-0 text-slate-600 leading-relaxed text-sm space-y-3">
+                <p>Dottore in Economia Aziendale, iscritto all'Albo dei Dottori Commercialisti.</p>
+                <p>Specializzato in <strong>diritto tributario e contenzioso</strong>. Affianca le imprese nella pianificazione fiscale strategica e nella gestione delle comunicazioni con l'Agenzia delle Entrate.</p>
+                <p>Ha un approccio pragmatico orientato alla risoluzione dei problemi, garantendo ai clienti la massima serenità nella gestione dei propri obblighi fiscali.</p>
+                <Link href="/prenotazioni" className="inline-flex items-center gap-2 text-slate-900 font-bold text-sm pt-2">
+                  Prenota con Luca <ArrowRight size={16} />
+                </Link>
+              </div>
+            </details>
           </div>
 
-          {/* ========================================== */}
-          {/* CARDS DESCRIZIONE (Assolute, scorrono sopra le foto) */}
-          {/* ========================================== */}
-
-          {/* CARD BIO ALESSIA (Scorre da Destra verso Sinistra, copre LUCA) */}
-          <div className={`
-            hidden md:flex absolute top-0 right-0 w-1/2 h-full bg-white rounded-3xl p-10 flex-col justify-center z-20 border border-slate-100 shadow-2xl
-            transition-all duration-500 ease-out
-            ${activeProfile === 'alessia' ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'}
-          `}>
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'var(--font-serif)' }}>
-              Dott.ssa Alessia Cerioli
-            </h3>
+          {/* === DESKTOP OVERLAY: Bio di Alessia (scorre da DESTRA coprendo Luca) === */}
+          <div className={`hidden md:flex absolute top-0 right-0 w-1/2 h-full bg-white rounded-3xl p-10 flex-col justify-center z-20 border border-slate-100 shadow-2xl transition-all duration-500 ease-out pointer-events-none ${activeProfile === 'alessia' ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'var(--font-serif)' }}>Dott.ssa Alessia Cerioli</h3>
             <p className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-6">Dottoressa Commercialista</p>
             <div className="space-y-3 text-slate-600 leading-relaxed">
               <p>Laureata in Economia e Commercio, iscritta all'Albo dei Dottori Commercialisti.</p>
@@ -142,21 +154,15 @@ export default function ChiSiamo() {
               <p>Appassionata di organizzazione aziendale, il suo obiettivo è ottimizzare i processi contabili dei clienti per liberare tempo e risorse.</p>
             </div>
             <div className="pt-8">
-              <Link href="/prenotazioni" className="inline-flex items-center gap-2 text-slate-900 font-bold hover:gap-3 transition-all group/link">
-                Prenota con Alessia <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-1" />
+              <Link href="/prenotazioni" className="inline-flex items-center gap-2 text-slate-900 font-bold hover:gap-3 transition-all">
+                Prenota con Alessia <ArrowRight size={18} />
               </Link>
             </div>
           </div>
 
-          {/* CARD BIO LUCA (Scorre da Sinistra verso Destra, copre ALESSIA) */}
-          <div className={`
-            hidden md:flex absolute top-0 left-0 w-1/2 h-full bg-white rounded-3xl p-10 flex-col justify-center z-20 border border-slate-100 shadow-2xl
-            transition-all duration-500 ease-out
-            ${activeProfile === 'luca' ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 pointer-events-none'}
-          `}>
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'var(--font-serif)' }}>
-              Rag. Luca Cerioli
-            </h3>
+          {/* === DESKTOP OVERLAY: Bio di Luca (scorre da SINISTRA coprendo Alessia) === */}
+          <div className={`hidden md:flex absolute top-0 left-0 w-1/2 h-full bg-white rounded-3xl p-10 flex-col justify-center z-20 border border-slate-100 shadow-2xl transition-all duration-500 ease-out pointer-events-none ${activeProfile === 'luca' ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'var(--font-serif)' }}>Rag. Luca Cerioli</h3>
             <p className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-6">Tributarista</p>
             <div className="space-y-3 text-slate-600 leading-relaxed">
               <p>Dottore in Economia Aziendale, iscritto all'Albo dei Dottori Commercialisti.</p>
@@ -164,8 +170,8 @@ export default function ChiSiamo() {
               <p>Ha un approccio pragmatico orientato alla risoluzione dei problemi, garantendo ai clienti la massima serenità nella gestione dei propri obblighi fiscali.</p>
             </div>
             <div className="pt-8">
-              <Link href="/prenotazioni" className="inline-flex items-center gap-2 text-slate-900 font-bold hover:gap-3 transition-all group/link">
-                Prenota con Luca <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-1" />
+              <Link href="/prenotazioni" className="inline-flex items-center gap-2 text-slate-900 font-bold hover:gap-3 transition-all">
+                Prenota con Luca <ArrowRight size={18} />
               </Link>
             </div>
           </div>

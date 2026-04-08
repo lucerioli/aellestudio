@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react'
+import { Phone, Mail, Clock, ArrowRight } from 'lucide-react'
 
 export default function Contatti() {
   return (
@@ -15,14 +15,14 @@ export default function Contatti() {
         </p>
       </section>
 
-      {/* --- GRIGLIA MAPPA E RECAPITI --- */}
-      <section className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-12 gap-8">
+      {/* --- GRIGLIA MAPPA E RECAPITI (Allineamento Perfetto) --- */}
+      <section className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-8 h-auto md:h-[600px]">
           
-          {/* COLONNA 1: MAPPA E INDIRIZZO (Occupata 7 colonne su 12) */}
-          <div className="md:col-span-7 bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-sm group">
-            {/* Mappa */}
-            <div className="h-64 md:h-96 w-full bg-slate-200 overflow-hidden">
+          {/* COLONNA SINISTRA: MAPPA + INDIRIZZO */}
+          <div className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-sm flex flex-col group">
+            {/* Mappa (occupa tutto lo spazio disponibile meno la barra in basso) */}
+            <div className="flex-1 min-h-0 bg-slate-200">
                <iframe 
                  src="https://maps.google.com/maps?q=Via+1+Maggio+17,+Villafranca+in+Lunigiana&t=&z=15&ie=UTF8&iwloc=&output=embed"
                  width="100%" 
@@ -35,87 +35,87 @@ export default function Contatti() {
                ></iframe>
             </div>
             
-            {/* Info Indirizzo */}
-            <div className="p-8 md:p-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white border-t border-slate-100">
+            {/* Barra Indirizzo (compatto, sempre in basso) */}
+            <div className="bg-white px-6 py-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-1" style={{ fontFamily: 'var(--font-serif)' }}>AL - Studio Cerioli</h3>
-                <p className="text-slate-600">Via 1 Maggio, 17 - 54028 Villafranca in Lunigiana (MS)</p>
+                <h3 className="text-base font-bold text-slate-900" style={{ fontFamily: 'var(--font-serif)' }}>AL - Studio Cerioli</h3>
+                <p className="text-slate-600 text-sm">Via 1 Maggio, 17 - 54028 Villafranca in Lunigiana (MS)</p>
               </div>
-              <div className="flex items-center gap-2 text-sm font-medium text-slate-500 bg-slate-50 px-4 py-2 rounded-lg">
-                <Clock size={16} />
+              <div className="flex items-center gap-2 text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1.5 rounded-lg whitespace-nowrap">
+                <Clock size={14} />
                 Lun - Ven: 09:00 - 18:00
               </div>
             </div>
           </div>
 
-          {/* COLONNA 2: RECAPITI CONSULENTI (Occupata 5 colonne su 12) */}
-          <div className="md:col-span-5 flex flex-col gap-6">
+          {/* COLONNA DESTRA: RECAPITI CONSULENTI (Divisi esattamente a metà) */}
+          <div className="grid grid-rows-2 gap-6 h-full">
             
             {/* CARD ALESSIA */}
-            <div className="flex-1 bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-center">
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold mb-1" style={{ fontFamily: 'var(--font-serif)' }}>Dott.ssa Alessia Cerioli</h3>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Dottoressa Commercialista</p>
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-center">
+              <div className="mb-3">
+                <h3 className="text-xl font-semibold" style={{ fontFamily: 'var(--font-serif)' }}>Dott.ssa Alessia Cerioli</h3>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-0.5">Dottoressa Commercialista</p>
               </div>
               
-              <div className="space-y-4">
-                <a href="tel:+390000000000" className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
-                  <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
-                    <Phone size={18} />
+              <div className="space-y-3">
+                <a href="tel:+390000000000" className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors group/item">
+                  <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
+                    <Phone size={15} />
                   </div>
                   <div>
                     <p className="text-xs text-slate-400 font-medium">Telefono</p>
-                    <p className="text-slate-800 font-semibold">+39 000 000 0000</p> {/* Sostituisci col numero reale */}
+                    <p className="text-slate-800 font-semibold text-sm">+39 000 000 0000</p>
                   </div>
                 </a>
                 
-                <a href="mailto:alessia@alstudio.it" className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
-                  <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
-                    <Mail size={18} />
+                <a href="mailto:alessia@alstudio.it" className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors group/item">
+                  <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
+                    <Mail size={15} />
                   </div>
                   <div>
                     <p className="text-xs text-slate-400 font-medium">Email</p>
-                    <p className="text-slate-800 font-semibold">alessia@alstudio.it</p> {/* Sostituisci con la mail reale */}
+                    <p className="text-slate-800 font-semibold text-sm">alessia@alstudio.it</p>
                   </div>
                 </a>
               </div>
 
-              <Link href="/prenotazioni" className="mt-6 inline-flex items-center justify-center gap-2 w-full border border-slate-200 py-3 rounded-xl text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-all">
-                Prenota un incontro <ArrowRight size={16} />
+              <Link href="/prenotazioni" className="mt-4 inline-flex items-center justify-center gap-2 w-full border border-slate-200 py-2 rounded-xl text-xs font-semibold text-slate-900 hover:bg-slate-50 transition-all">
+                Prenota un incontro <ArrowRight size={14} />
               </Link>
             </div>
 
             {/* CARD LUCA */}
-            <div className="flex-1 bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-center">
-              <div className="mb-6">
-                <h3 className="text-2xl font-semibold mb-1" style={{ fontFamily: 'var(--font-serif)' }}>Rag. Luca Cerioli</h3>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Tributarista</p>
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-center">
+              <div className="mb-3">
+                <h3 className="text-xl font-semibold" style={{ fontFamily: 'var(--font-serif)' }}>Rag. Luca Cerioli</h3>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-0.5">Tributarista</p>
               </div>
               
-              <div className="space-y-4">
-                <a href="tel:+390000000000" className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
-                  <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
-                    <Phone size={18} />
+              <div className="space-y-3">
+                <a href="tel:+390000000000" className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors group/item">
+                  <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
+                    <Phone size={15} />
                   </div>
                   <div>
                     <p className="text-xs text-slate-400 font-medium">Telefono</p>
-                    <p className="text-slate-800 font-semibold">+39 000 000 0000</p> {/* Sostituisci col numero reale */}
+                    <p className="text-slate-800 font-semibold text-sm">+39 000 000 0000</p>
                   </div>
                 </a>
                 
-                <a href="mailto:luca@alstudio.it" className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors group/item">
-                  <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
-                    <Mail size={18} />
+                <a href="mailto:luca@alstudio.it" className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 transition-colors group/item">
+                  <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 group-hover/item:bg-slate-900 group-hover/item:text-white transition-colors">
+                    <Mail size={15} />
                   </div>
                   <div>
                     <p className="text-xs text-slate-400 font-medium">Email</p>
-                    <p className="text-slate-800 font-semibold">luca@alstudio.it</p> {/* Sostituisci con la mail reale */}
+                    <p className="text-slate-800 font-semibold text-sm">luca@alstudio.it</p>
                   </div>
                 </a>
               </div>
 
-              <Link href="/prenotazioni" className="mt-6 inline-flex items-center justify-center gap-2 w-full border border-slate-200 py-3 rounded-xl text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-all">
-                Prenota un incontro <ArrowRight size={16} />
+              <Link href="/prenotazioni" className="mt-4 inline-flex items-center justify-center gap-2 w-full border border-slate-200 py-2 rounded-xl text-xs font-semibold text-slate-900 hover:bg-slate-50 transition-all">
+                Prenota un incontro <ArrowRight size={14} />
               </Link>
             </div>
 
@@ -123,7 +123,7 @@ export default function Contatti() {
         </div>
       </section>
 
-      {/* --- SEZIONE SCRIVICI (Opzionale ma consigliata) --- */}
+      {/* --- SEZIONE SCRIVICI --- */}
       <section className="max-w-3xl mx-auto px-6">
         <div className="bg-slate-900 rounded-3xl p-8 md:p-12 text-center text-white shadow-xl">
           <h2 className="text-3xl font-semibold mb-4" style={{ fontFamily: 'var(--font-serif)' }}>

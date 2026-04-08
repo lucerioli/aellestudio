@@ -1,6 +1,7 @@
 import './globals.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import Header from './components/Header'
 
 export const metadata = {
   title: 'AL - Studio Cerioli | Consulenza Fiscale e Contabile',
@@ -12,35 +13,8 @@ export default function RootLayout({ children }) {
     <html lang="it">
       <body className="antialiased">
         
-        {/* HEADER */}
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <Image 
-                src="/images/logo.png" 
-                alt="Logo AL - Studio Cerioli" 
-                width={280} 
-                height={124} 
-                className="h-12 w-auto object-contain"
-                priority
-              />
-            </Link>
-            
-            <nav className="hidden md:flex items-center gap-8">
-              <Link href="/" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Home</Link>
-              <Link href="/servizi" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Servizi</Link>
-              <Link href="/chi-siamo" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Chi siamo</Link>
-              <Link href="/contatti" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Contatti</Link>
-            </nav>
-
-            <Link 
-              href="/prenotazioni" 
-              className="bg-slate-900 text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-slate-800 transition-all hover:shadow-lg"
-            >
-              Prenota consulenza
-            </Link>
-          </div>
-        </header>
+        {/* HEADER (Client Component) */}
+        <Header />
 
         {/* MAIN */}
         <main className="min-h-screen">
@@ -88,4 +62,4 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   )
-} 
+}
