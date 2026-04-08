@@ -19,9 +19,10 @@ export default function RootLayout({ children }) {
               <Image 
                 src="/images/logo.png" 
                 alt="Logo AL - Studio Cerioli" 
-                width={160} 
-                height={46} 
-                className="h-10 w-auto object-contain"
+                width={280} 
+                height={124} 
+                className="h-12 w-auto object-contain"
+                priority
               />
             </Link>
             
@@ -54,9 +55,9 @@ export default function RootLayout({ children }) {
                 <Image 
                   src="/images/logo.png" 
                   alt="Logo AL - Studio Cerioli" 
-                  width={140} 
-                  height={40} 
-                  className="h-8 w-auto object-contain"
+                  width={210} 
+                  height={93} 
+                  className="h-9 w-auto object-contain"
                 />
               </div>
               <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
@@ -87,4 +88,4 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   )
-}
+} 

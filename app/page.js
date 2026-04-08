@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ShieldCheck, Calculator, Building, Phone, ArrowRight, CheckCircle } from "lucide-react"
+import { ShieldCheck, Calculator, Building, ArrowRight, CheckCircle } from "lucide-react"
 
 export default function Home() {
   return (

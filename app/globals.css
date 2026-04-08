@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+:root {
+  --font-serif: 'Playfair Display', serif;
+}
 
 body {
   background: white;
@@ -15,15 +21,12 @@ section {
 }
 
 @keyframes fadeIn {
-
   from {
-    opacity:0;
-    transform:translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
   }
-
   to {
-    opacity:1;
-    transform:translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
-
 }
