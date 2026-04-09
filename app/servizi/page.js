@@ -1,21 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { FileText, BarChart3, TrendingUp, Users, Building2, ShieldCheck, Target, Rocket, LifeBuoy } from 'lucide-react'
 
-// Ordine esatto richiesto + 2 nuovi servizi
 const SERVICES = [
   // RIGA 1
   { id: 'contabilita', title: 'Tenuta impianto contabile', icon: <FileText size={24} />, desc: 'Gestione completa della contabilità ordinaria e semplificata. Registrazione documenti, tenuta partitari, liquidazioni IVA e report periodici per mantenere i tuoi dati sempre ordinati e a norma.' },
   { id: 'lavoro', title: 'Consulenza del lavoro', icon: <Users size={24} />, desc: 'Gestione buste paga, adempimenti previdenziali e contrattualistica. Assistenza su welfare aziendale, licenziamenti, assensioni agevolate e relazioni sindacali.' },
   { id: 'fiscale', title: 'Consulenza fiscale', icon: <ShieldCheck size={24} />, desc: 'Pianificazione tributaria strategica e ottimizzazione del carico fiscale. Assistenza in sede di contenzioso, interpelli e gestione dei rapporti con l\'Agenzia delle Entrate.' },
-  
   // RIGA 2
   { id: 'analisi-contabile', title: 'Analisi contabile', icon: <BarChart3 size={24} />, desc: 'Revisione critica e interpretazione dei dati contabili. Trasformiamo i numeri in informazioni chiare per monitorare performance, margini e punti di forza della tua attività.' },
   { id: 'analisi-finanziaria', title: 'Analisi finanziaria', icon: <TrendingUp size={24} />, desc: 'Studio dei flussi di cassa, calcolo degli indici di bilancio e proiezioni economiche. Supporto decisionale per investimenti, richieste di finanziamento e gestione della liquidità.' },
   { id: 'societaria', title: 'Consulenza societaria', icon: <Building2 size={24} />, desc: 'Supporto nella costituzione, trasformazione, fusioni e scissioni. Assistenza nella redazione di statuti, patti parasociali e nella gestione degli organi societari.' },
-  
   // RIGA 3
   { id: 'strategia', title: 'Strategia di impresa', icon: <Target size={24} />, desc: 'Business planning, analisi di mercato e ricerca di agevolazioni. Ti affianchiamo nei percorsi di crescita, internazionalizzazione e innovazione per concretizzare i tuoi obiettivi.' },
   { id: 'startup', title: 'Avvio startup', icon: <Rocket size={24} />, desc: 'Dall\'idea al mercato: business plan, scelta della forma giuridica, accesso a bandi e finanziamenti per far decollare il tuo progetto imprenditoriale con solide basi.' },
@@ -24,6 +21,17 @@ const SERVICES = [
 
 export default function Servizi() {
   const [activeCard, setActiveCard] = useState(null)
+
+  // Chiudi la card se si clicca fuori (solo mobile)
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (window.innerWidth < 768 && activeCard && !e.target.closest('[data-card]')) {
+        setActiveCard(null)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [activeCard])
 
   return (
     <div className="space-y-24 pb-24">
@@ -46,12 +54,14 @@ export default function Servizi() {
             return (
               <div 
                 key={service.id} 
+                data-card
                 className={`relative h-72 bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${isActive ? 'shadow-xl border-slate-300' : 'hover:shadow-xl hover:border-slate-300'}`}
-                // Desktop: hover
                 onMouseEnter={() => setActiveCard(service.id)}
                 onMouseLeave={() => setActiveCard(null)}
-                // Mobile: tap
-                onClick={() => setActiveCard(isActive ? null : service.id)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveCard(isActive && window.innerWidth < 768 ? null : service.id)
+                }}
               >
                 {/* LAYER BASE: Titolo e Icona */}
                 <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 text-center transition-all duration-500 ease-out ${isActive ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
@@ -61,9 +71,6 @@ export default function Servizi() {
                   <h3 className="text-xl font-semibold text-slate-900 leading-tight" style={{ fontFamily: 'var(--font-serif)' }}>
                     {service.title}
                   </h3>
-                  <span className="text-xs text-slate-400 mt-4 uppercase tracking-widest opacity-60 md:hidden">
-                    Tocca per i dettagli
-                  </span>
                 </div>
 
                 {/* LAYER DETTAGLIO: Overlay descrizione */}

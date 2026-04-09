@@ -8,14 +8,28 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.15]" style={{ fontFamily: 'var(--font-serif)' }}>
+          
+          {/* LOGO PRIMA su mobile, DOPO su desktop */}
+          <div className="order-1 md:order-2 relative flex items-center justify-center h-[400px] md:h-[450px] px-2">
+            <Image 
+              src="/images/logo-hero.png" 
+              alt="Logo AL - Studio Cerioli" 
+              width={600} 
+              height={265} 
+              className="w-full h-auto max-w-[520px] md:max-w-[580px] object-contain"
+              priority
+            />
+          </div>
+          
+          {/* TESTO DOPO su mobile, PRIMA su desktop */}
+          <div className="order-2 md:order-1 space-y-8 text-center md:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.15]" style={{ fontFamily: 'var(--font-serif)' }}>
               La fiscalità non deve essere un peso. <span className="text-slate-500">Deve essere una leva.</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed mx-auto md:mx-0">
               Supportiamo imprese e professionisti con un approccio moderno, chiaro e sempre al tuo fianco. Dimentica la burocrazia, concentrati sul tuo business.
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
               <Link href="/prenotazioni" className="group inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-3.5 rounded-full font-medium hover:bg-slate-800 transition-all hover:shadow-lg">
                 Prenota una consulenza
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -26,17 +40,6 @@ export default function Home() {
             </div>
           </div>
           
-          {/* SPAZIO LOGO */}
-          <div className="relative flex items-center justify-center h-[450px] px-2">
-            <Image 
-              src="/images/logo-hero.png" 
-              alt="Logo AL - Studio Cerioli" 
-              width={600} 
-              height={265} 
-              className="w-full h-auto max-w-[520px] md:max-w-[580px] object-contain"
-              priority
-            />
-          </div>
         </div>
       </section>
 
