@@ -2,26 +2,25 @@ import './globals.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from './components/Header'
+import CookieBanner from './components/CookieBanner'
+import AnalyticsScripts from './components/AnalyticsScripts'
 
 export const metadata = {
-  title: 'AL - Studio Cerioli | Consulenza Fiscale e Contabile',
-  description: 'Consulenza fiscale, contabilità e servizi per imprese e professionisti.'
+  title: 'AL - Studio Cerioli | Consulenza Fiscale, Contabile e del Lavoro',
+  description: 'Consulenza fiscale, contabilità e servizi per imprese e professionisti. Approccio chiaro, moderno ed efficiente.'
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="it">
-      <body className="antialiased">
+      <body className="antialiased bg-white text-slate-800 selection:bg-slate-900 selection:text-white">
         
-        {/* HEADER (Client Component) */}
         <Header />
-
-        {/* MAIN */}
+        
         <main className="min-h-screen">
           {children}
         </main>
 
-        {/* FOOTER */}
         <footer className="bg-slate-50 border-t border-slate-200 py-16 mt-24">
           <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
             <div className="col-span-2">
@@ -49,8 +48,7 @@ export default function RootLayout({ children }) {
             <div>
               <h4 className="font-semibold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-serif)' }}>Legale</h4>
               <div className="space-y-3 text-sm text-slate-600">
-                <Link href="/privacy" className="block hover:text-slate-900 transition-colors">Privacy Policy</Link>
-                <Link href="/cookie" className="block hover:text-slate-900 transition-colors">Cookie Policy</Link>
+                <Link href="/privacy" className="block hover:text-slate-900 transition-colors">Privacy & Cookie Policy</Link>
               </div>
             </div>
           </div>
@@ -58,6 +56,9 @@ export default function RootLayout({ children }) {
             © {new Date().getFullYear()} AL - Studio Cerioli. Tutti i diritti riservati.
           </div>
         </footer>
+
+        <CookieBanner />
+        <AnalyticsScripts />
 
       </body>
     </html>

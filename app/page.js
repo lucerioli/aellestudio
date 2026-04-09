@@ -1,17 +1,14 @@
 import Link from 'next/link'
-import { ShieldCheck, Calculator, Building, ArrowRight, CheckCircle } from "lucide-react"
+import Image from 'next/image'
+import { ShieldCheck, Calculator, Users, ArrowRight, CheckCircle } from "lucide-react"
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full text-sm font-medium text-slate-700">
-              <CheckCircle size={16} className="text-slate-900" />
-              Consulenza fiscale digitale e trasparente
-            </div>
             <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.15]" style={{ fontFamily: 'var(--font-serif)' }}>
               La fiscalità non deve essere un peso. <span className="text-slate-500">Deve essere una leva.</span>
             </h1>
@@ -29,31 +26,17 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="relative bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl h-[450px] flex items-center justify-center overflow-hidden shadow-sm border border-slate-100">
-            <div className="text-center space-y-4">
-              <div className="w-28 h-28 bg-white rounded-2xl flex items-center justify-center shadow-md mx-auto">
-                <span className="text-3xl text-slate-900" style={{ fontFamily: 'var(--font-serif)' }}>AL</span>
-              </div>
-              <p className="text-slate-500 text-sm font-medium">Inserisci qui il tuo logo o immagine studio</p>
-            </div>
+          {/* SPAZIO LOGO */}
+          <div className="relative flex items-center justify-center h-[450px] px-2">
+            <Image 
+              src="/images/logo-hero.png" 
+              alt="Logo AL - Studio Cerioli" 
+              width={600} 
+              height={265} 
+              className="w-full h-auto max-w-[520px] md:max-w-[580px] object-contain"
+              priority
+            />
           </div>
-        </div>
-      </section>
-
-      {/* STATISTICHE */}
-      <section className="py-16 border-y border-slate-100 bg-white px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { num: '+15', label: 'Anni di esperienza' },
-            { num: '+500', label: 'Clienti seguiti' },
-            { num: '100%', label: 'Approccio digitale' },
-            { num: '24h', label: 'Tempo di risposta' }
-          ].map((stat, i) => (
-            <div key={i} className="space-y-1">
-              <div className="text-3xl md:text-4xl font-semibold text-slate-900" style={{ fontFamily: 'var(--font-serif)' }}>{stat.num}</div>
-              <div className="text-sm text-slate-500 font-medium">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -71,7 +54,7 @@ export default function Home() {
             {[
               { icon: <ShieldCheck size={28} />, title: 'Consulenza fiscale', desc: 'Pianificazione strategica, adempimenti tributari e ottimizzazione del carico fiscale.' },
               { icon: <Calculator size={28} />, title: 'Contabilità', desc: 'Gestione completa, bilanci, dichiarazioni e reportistica mensile chiara.' },
-              { icon: <Building size={28} />, title: 'Consulenza societaria', desc: 'Costituzione, trasformazione, patti parasociali e governance aziendale.' }
+              { icon: <Users size={28} />, title: 'Consulenza del lavoro', desc: 'Gestione buste paga, adempimenti previdenziali, contrattualistica e welfare aziendale.' }
             ].map((service, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                 <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-700 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-colors">
