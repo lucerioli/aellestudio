@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --font-serif: 'Playfair Display', serif;
@@ -29,33 +31,4 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Supporto per hover incrociato tra peer */
-.peer:hover ~ .peer-group-alessia-hover,
-.peer:hover ~ .peer-group-luca-hover {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-/* Reset per quando l'hover esce */
-.peer:not(:hover) ~ .peer-group-alessia-hover,
-.peer:not(:hover) ~ .peer-group-luca-hover {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Specifico per Alessia (slide da sinistra) */
-.group-alessia:hover ~ .peer-group-luca-hover {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-/* Specifico per Luca (slide da destra) */
-.group-luca:hover ~ .peer-group-alessia-hover {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
 }
