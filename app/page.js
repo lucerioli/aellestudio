@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShieldCheck, Calculator, Users, ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle } from "lucide-react"
+import PercorsoArchetipi from './components/PercorsoArchetipi'
 
 export default function Home() {
   return (
@@ -43,33 +44,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVIZI */}
-      <section className="py-24 bg-slate-50 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4" style={{ fontFamily: 'var(--font-serif)' }}>
-              I nostri servizi
-            </h2>
-            <p className="text-slate-600 text-lg">Soluzioni integrate per semplificare la gestione della tua attività.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: <ShieldCheck size={28} />, title: 'Consulenza fiscale', desc: 'Pianificazione strategica, adempimenti tributari e ottimizzazione del carico fiscale.' },
-              { icon: <Calculator size={28} />, title: 'Contabilità', desc: 'Gestione completa, bilanci, dichiarazioni e reportistica mensile chiara.' },
-              { icon: <Users size={28} />, title: 'Consulenza del lavoro', desc: 'Gestione buste paga, adempimenti previdenziali, contrattualistica e welfare aziendale.' }
-            ].map((service, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-700 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-colors">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3" style={{ fontFamily: 'var(--font-serif)' }}>{service.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{service.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* PERCORSO A 4 ARCHETIPI (sostituisce l'anteprima a 3 servizi) */}
+      <PercorsoArchetipi />
 
       {/* PERCHÉ SCEGLIERCI */}
       <section className="py-24 px-6">
